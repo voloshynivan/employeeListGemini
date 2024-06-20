@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Employee List</title>
+  </head>
+  <body>
+    <h1>Employee List</h1>
+    <form method="get">
+      <label for="department">Filter by Department:</label>
+      <input type="text" id="department" name="department" />
+      <button type="submit">Filter</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Index</th>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Department</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% set counter = 0 %} {% for employee in employees %}
+        <tr>
+          <td>{{ counter + 1 }}</td>
+          <td><a href="/employee/{{ employee.id }}">{{ employee.name }}</a></td>
+          <td>{{ employee.surname }}</td>
+          <td>{{ employee.department }}</td>
+        </tr>
+        {% set counter = counter + 1 %} {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
